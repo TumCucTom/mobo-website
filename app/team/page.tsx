@@ -45,7 +45,7 @@ const team = [
   {
     name: 'Saud Shahini',
     title: 'Developer',
-    img: 'https://randomuser.me/api/portraits/women/56.jpg',
+    img: 'saud.JPG',
     desc: 'Student at the University of Southampton with a passion for technology and finance.'
   },
 ]
