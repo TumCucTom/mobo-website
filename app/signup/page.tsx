@@ -14,9 +14,17 @@ function MascotWithEyes({ animate = false, onAnimationEnd }: { animate?: boolean
   const [mouse, setMouse] = useState<{ x: number; y: number }>({ x: 0, y: 0 })
   const [animState, setAnimState] = useState<'idle' | 'animating' | 'done'>('idle')
   const animRef = useRef({ t: 0, triggered: false })
+  const [isMobile, setIsMobile] = useState(false)
 
-  // Handle mouse movement
   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  useEffect(() => {
+    if (isMobile) return
     const handleMouseMove = (event: MouseEvent) => {
       const x = (event.clientX / window.innerWidth) * 2 - 1
       const y = -(event.clientY / window.innerHeight) * 2 + 1
@@ -24,9 +32,8 @@ function MascotWithEyes({ animate = false, onAnimationEnd }: { animate?: boolean
     }
     window.addEventListener('mousemove', handleMouseMove)
     return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
+  }, [isMobile])
 
-  // Animation trigger
   useEffect(() => {
     if (animate && animState === 'idle') {
       animRef.current.t = 0
@@ -35,56 +42,56 @@ function MascotWithEyes({ animate = false, onAnimationEnd }: { animate?: boolean
     }
   }, [animate, animState])
 
-  // Animate mascot bounce
-  useFrame((_, delta) => {
+  useFrame((state, delta) => {
+    let x = mouse.x
+    let y = mouse.y
+    if (isMobile) {
+      const t = state.clock.getElapsedTime()
+      x = Math.sin(t * 0.3) * 0.7
+      y = Math.cos(t * 0.2) * 0.7
+    }
     const moveFactor = 0.05
     const maxOffset = 0.06
-    const distFromCenter = Math.sqrt(mouse.x * mouse.x + mouse.y * mouse.y)
+    const distFromCenter = Math.sqrt(x * x + y * y)
     const normalizedDist = Math.min(distFromCenter / Math.SQRT2, 1)
     const baseZ = 0.07
     const extraZ = 0.02
     const centerFactor = 1 - normalizedDist
     const zPos = baseZ + centerFactor * extraZ
     if (leftEyeRef.current) {
-      leftEyeRef.current.position.x = clamp(mouse.x * moveFactor, -maxOffset, maxOffset)
-      leftEyeRef.current.position.y = clamp(mouse.y * moveFactor, -maxOffset, maxOffset)
+      leftEyeRef.current.position.x = clamp(x * moveFactor, -maxOffset, maxOffset)
+      leftEyeRef.current.position.y = clamp(y * moveFactor, -maxOffset, maxOffset)
       leftEyeRef.current.position.z = zPos
     }
     if (rightEyeRef.current) {
-      rightEyeRef.current.position.x = clamp(mouse.x * moveFactor, -maxOffset, maxOffset)
-      rightEyeRef.current.position.y = clamp(mouse.y * moveFactor, -maxOffset, maxOffset)
+      rightEyeRef.current.position.x = clamp(x * moveFactor, -maxOffset, maxOffset)
+      rightEyeRef.current.position.y = clamp(y * moveFactor, -maxOffset, maxOffset)
       rightEyeRef.current.position.z = zPos
     }
-    // Mascot bounce animation
     if (groupRef.current) {
       if (animState === 'animating') {
         animRef.current.t += delta
-        // Animation: 0-0.3s pull down, 0.3-0.6s bounce up, 0.6-0.8s settle
-        let y = -4
+        let yPos = -4
         if (animRef.current.t < 0.3) {
-          // Pull down
-          y = -4 - animRef.current.t * 3 // down to -4.9
+          yPos = -4 - animRef.current.t * 3
         } else if (animRef.current.t < 0.6) {
-          // Bounce up
           const t = (animRef.current.t - 0.3) / 0.3
-          y = -4.9 + t * 2.2 // up to -2.7
+          yPos = -4.9 + t * 2.2
         } else if (animRef.current.t < 0.8) {
-          // Settle (fall back to -4)
           const t = (animRef.current.t - 0.6) / 0.2
-          y = -2.7 - t * 1.3 // back to -4
+          yPos = -2.7 - t * 1.3
         } else {
-          y = -4
+          yPos = -4
           setAnimState('done')
           if (onAnimationEnd) onAnimationEnd()
         }
-        groupRef.current.position.y = y
+        groupRef.current.position.y = yPos
       } else {
         groupRef.current.position.y = -4
       }
-      // Also rotate with mouse
       const rotateFactor = 0.4
-      groupRef.current.rotation.y = mouse.x * rotateFactor
-      groupRef.current.rotation.x = mouse.y * rotateFactor * 0.5
+      groupRef.current.rotation.y = x * rotateFactor
+      groupRef.current.rotation.x = y * rotateFactor * 0.5
     }
   })
 

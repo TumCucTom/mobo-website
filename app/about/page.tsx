@@ -181,7 +181,7 @@ export default function AboutPage() {
         maxWidth: isMobile ? 600 : 1300,
         margin: '0 auto',
         padding: isMobile ? '0 0.5rem' : '0 1.5rem',
-        marginTop: isMobile ? '100px' : '140px',
+        marginTop: '64px',
         gap: isMobile ? '0.5rem' : '2.5rem',
         width: '100%',
       }}>

@@ -17,7 +17,7 @@ const founders = [
   },
   {
     name: 'Abdulbadie Lary',
-    title: 'Co-Founder',
+    title: 'COO & Co-Founder',
     img: 'lary.jpeg',
     desc: 'Eager-to-learn finance student at the University of Bristol committed to the field'
   },
@@ -31,64 +31,22 @@ const founders = [
 
 const team = [
   {
-    name: 'Taylor Smith',
-    title: 'Lead Designer',
-    img: 'https://randomuser.me/api/portraits/men/12.jpg',
-    desc: 'Crafts beautiful, intuitive interfaces for all users.'
+    name: 'Mariia Ivanova',
+    title: 'Marketing Lead',
+    img: 'mariia.jpeg',
+    desc: 'BSc Marketing student with practical experience in digital marketing, social media content creation, and brand strategy across startups'
   },
   {
-    name: 'Jordan Chen',
-    title: 'Full Stack Engineer',
-    img: 'https://randomuser.me/api/portraits/women/23.jpg',
-    desc: 'Builds robust, scalable systems for the Mobo platform.'
+    name: 'Diana Usova',
+    title: 'Buisness Researcher',
+    img: 'diana.jpeg',
+    desc: 'Bsc Buisness student at the University of Bristol, eager to educate the field of finance.'
   },
   {
-    name: 'Samira Ali',
-    title: 'Content Lead',
+    name: 'Saud Shahini',
+    title: 'Developer',
     img: 'https://randomuser.me/api/portraits/women/56.jpg',
-    desc: 'Creates engaging, educational content for every world.'
-  },
-  {
-    name: 'Chris Evans',
-    title: 'Game Designer',
-    img: 'https://randomuser.me/api/portraits/men/78.jpg',
-    desc: 'Designs fun, rewarding challenges and experiences.'
-  },
-  {
-    name: 'Priya Singh',
-    title: 'Community Manager',
-    img: 'https://randomuser.me/api/portraits/women/81.jpg',
-    desc: 'Connects and supports the Mobo learner community.'
-  },
-  {
-    name: 'Riley Brooks',
-    title: 'Mobile Engineer',
-    img: 'https://randomuser.me/api/portraits/men/41.jpg',
-    desc: 'Ensures a smooth experience on every device.'
-  },
-  {
-    name: 'Ava Martinez',
-    title: 'UX Researcher',
-    img: 'https://randomuser.me/api/portraits/women/90.jpg',
-    desc: 'Finds ways to make learning even more effective.'
-  },
-  {
-    name: 'Ethan Zhao',
-    title: 'Backend Engineer',
-    img: 'https://randomuser.me/api/portraits/men/53.jpg',
-    desc: 'Keeps the platform fast, secure, and reliable.'
-  },
-  {
-    name: 'Lila Green',
-    title: 'Animator',
-    img: 'https://randomuser.me/api/portraits/women/67.jpg',
-    desc: 'Brings the Mobo worlds and characters to life.'
-  },
-  {
-    name: 'Omar Farouk',
-    title: 'QA Lead',
-    img: 'https://randomuser.me/api/portraits/men/88.jpg',
-    desc: 'Ensures everything works perfectly for our users.'
+    desc: 'Student at the University of Southampton with a passion for technology and finance.'
   },
 ]
 

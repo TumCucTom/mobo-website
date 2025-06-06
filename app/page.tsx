@@ -11,6 +11,7 @@ import Link from 'next/link'
 
 export default function Home() {
   const [animateMascot, setAnimateMascot] = useState(false)
+  const [mascotLoaded, setMascotLoaded] = useState(false)
   const router = useRouter()
 
   // Handler for button click
@@ -21,6 +22,11 @@ export default function Home() {
   // Callback for when mascot animation is done
   const handleMascotAnimationEnd = () => {
     router.push('/signup')
+  }
+
+  // Handler for mascot loaded
+  const handleMascotLoaded = () => {
+    setMascotLoaded(true)
   }
 
   return (
@@ -35,6 +41,26 @@ export default function Home() {
       backgroundRepeat: 'no-repeat',
       fontFamily: "'Space Grotesk', sans-serif"
     }}>
+      {/* Loading Overlay */}
+      {!mascotLoaded && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          background: 'rgba(20,20,30,0.95)',
+          zIndex: 9999,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column',
+        }}>
+          <div style={{ color: 'white', fontSize: '2rem', fontWeight: 700, marginBottom: '1.5rem', letterSpacing: '0.08em' }}>Loading...</div>
+          <div style={{ width: 48, height: 48, border: '5px solid #fff', borderTop: '5px solid #ff8a00', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+          <style>{`@keyframes spin { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);} }`}</style>
+        </div>
+      )}
       {/* Persistent Top Bar */}
       <div style={{
         position: 'fixed',
@@ -141,6 +167,7 @@ export default function Home() {
           <MascotWithEyes 
             animate={animateMascot} 
             onAnimationEnd={handleMascotAnimationEnd}
+            onLoaded={handleMascotLoaded}
           />
           {/* <OrbitControls /> Uncomment for dev */}
         </Canvas>
@@ -149,8 +176,8 @@ export default function Home() {
   )
 }
 
-function MascotWithEyes({ animate = false, onAnimationEnd }: { animate?: boolean, onAnimationEnd?: () => void }) {
-  const { scene } = useGLTF('/models/mascot.glb') as { scene: Group }
+function MascotWithEyes({ animate = false, onAnimationEnd, onLoaded }: { animate?: boolean, onAnimationEnd?: () => void, onLoaded?: () => void }) {
+  const { scene } = useGLTF('/models/mascot.glb', true)
   const groupRef = useRef<Group>(null)
   const leftEyeRef = useRef<Mesh>(null)
   const rightEyeRef = useRef<Mesh>(null)
@@ -248,6 +275,10 @@ function MascotWithEyes({ animate = false, onAnimationEnd }: { animate?: boolean
       groupRef.current.rotation.x = y * rotateFactor * 0.5
     }
   })
+
+  useEffect(() => {
+    if (scene && onLoaded) onLoaded()
+  }, [scene, onLoaded])
 
   return (
     <group ref={groupRef} scale={[3, 3, 3]} position={[0, -4, 0]}>
