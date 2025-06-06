@@ -11,15 +11,15 @@ import Image from 'next/image'
 const founders = [
   {
     name: 'Pablo Moya-Angeler Lozano',
-    title: 'CEO & Founder',
+    title: 'CEO & Co-Founder',
     img: 'pablo.jpeg',
-    desc: 'Chartered Financial Analyst with a passion for financial education and gamification'
+    desc: 'Entrepreneurial student with a passion for financial education and gamification'
   },
   {
     name: 'Abdulbadie Lary',
     title: 'COO & Co-Founder',
     img: 'lary.jpeg',
-    desc: 'Eager-to-learn finance student at the University of Bristol committed to the field'
+    desc: 'Finance bachelor graduate, now pursuing a Master in Banking and Digital Finance at University College London.'
   },
   {
     name: 'Thomas Bale',
@@ -172,6 +172,18 @@ function clamp(val: number, min: number, max: number): number {
 
 useGLTF.preload('/models/mascot.glb')
 
+// Founders and Team box/image size constants (scaled up)
+const BOX_WIDTH = 300;
+const BOX_PADDING = '2.2rem 1.8rem';
+const IMG_SIZE = 140;
+const IMG_BORDER = '4px solid #fff';
+const IMG_BOX_SHADOW = '0 4px 24px rgba(0,0,0,0.18)';
+const NAME_FONT_SIZE = '1.35rem';
+const TITLE_FONT_SIZE = '1.13rem';
+const DESC_FONT_SIZE = '1.13rem';
+const GAP_DESKTOP = '3.5rem';
+const GAP_MOBILE = '2rem';
+
 export default function TeamPage() {
   const [isMobile, setIsMobile] = useState(false)
   useEffect(() => {
@@ -235,26 +247,26 @@ export default function TeamPage() {
             <h1 style={{ fontSize: '2.2rem', fontWeight: 800, marginBottom: '2.2rem', letterSpacing: '-0.01em', background: 'linear-gradient(90deg, #fff 60%, #ff8a00 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', textShadow: '0 2px 16px rgba(0,0,0,0.25)', textAlign: 'center' }}>
               Founders
             </h1>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '2.5rem', marginBottom: '3.5rem', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: GAP_DESKTOP, marginBottom: '4.5rem', flexWrap: 'wrap' }}>
               {founders.map((f, i) => (
-                <div key={i} style={{ background: 'rgba(30,30,40,0.7)', borderRadius: '1.2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.18)', padding: '1.5rem 1.2rem', width: 220, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <Image src={getImgSrc(f.img)} alt={f.name} width={90} height={90} style={{ borderRadius: '50%', objectFit: 'cover', marginBottom: '1.1rem', border: '3px solid #fff', boxShadow: '0 2px 12px rgba(0,0,0,0.12)' }} />
-                  <div style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.2rem' }}>{f.name}</div>
-                  <div style={{ fontSize: '0.98rem', color: '#ff8a00', fontWeight: 600, marginBottom: '0.5rem' }}>{f.title}</div>
-                  <div style={{ fontSize: '0.97rem', opacity: 0.88 }}>{f.desc}</div>
+                <div key={i} style={{ background: 'rgba(30,30,40,0.8)', borderRadius: '1.6rem', boxShadow: '0 8px 32px rgba(0,0,0,0.22)', padding: BOX_PADDING, width: BOX_WIDTH, minWidth: BOX_WIDTH, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <Image src={getImgSrc(f.img)} alt={f.name} width={IMG_SIZE} height={IMG_SIZE} style={{ borderRadius: '50%', objectFit: 'cover', marginBottom: '1.5rem', border: IMG_BORDER, boxShadow: IMG_BOX_SHADOW }} />
+                  <div style={{ fontWeight: 800, fontSize: NAME_FONT_SIZE, marginBottom: '0.35rem' }}>{f.name}</div>
+                  <div style={{ fontSize: TITLE_FONT_SIZE, color: '#ff8a00', fontWeight: 700, marginBottom: '0.7rem' }}>{f.title}</div>
+                  <div style={{ fontSize: DESC_FONT_SIZE, opacity: 0.92 }}>{f.desc}</div>
                 </div>
               ))}
             </div>
             <h2 style={{ fontSize: '1.7rem', fontWeight: 800, marginBottom: '1.5rem', letterSpacing: '-0.01em', background: 'linear-gradient(90deg, #fff 60%, #ff8a00 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', textShadow: '0 2px 16px rgba(0,0,0,0.18)', textAlign: 'center' }}>
               Team
             </h2>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: isMobile ? '1.2rem' : '2.2rem 2.2rem', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: GAP_MOBILE, justifyContent: 'center' }}>
               {team.map((t, i) => (
-                <div key={i} style={{ background: 'rgba(30,30,40,0.7)', borderRadius: '1.2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.13)', padding: '1.2rem 1rem', width: isMobile ? '46%' : 180, minWidth: isMobile ? 0 : 180, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <Image src={getImgSrc(t.img)} alt={t.name} width={70} height={70} style={{ borderRadius: '50%', objectFit: 'cover', marginBottom: '0.8rem', border: '2px solid #fff', boxShadow: '0 2px 8px rgba(0,0,0,0.10)' }} />
-                  <div style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '0.15rem' }}>{t.name}</div>
-                  <div style={{ fontSize: '0.93rem', color: '#ff8a00', fontWeight: 600, marginBottom: '0.4rem' }}>{t.title}</div>
-                  <div style={{ fontSize: '0.93rem', opacity: 0.85 }}>{t.desc}</div>
+                <div key={i} style={{ background: 'rgba(30,30,40,0.8)', borderRadius: '1.6rem', boxShadow: '0 8px 32px rgba(0,0,0,0.22)', padding: BOX_PADDING, width: BOX_WIDTH, minWidth: BOX_WIDTH, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <Image src={getImgSrc(t.img)} alt={t.name} width={IMG_SIZE} height={IMG_SIZE} style={{ borderRadius: '50%', objectFit: 'cover', marginBottom: '1.5rem', border: IMG_BORDER, boxShadow: IMG_BOX_SHADOW }} />
+                  <div style={{ fontWeight: 800, fontSize: NAME_FONT_SIZE, marginBottom: '0.35rem' }}>{t.name}</div>
+                  <div style={{ fontSize: TITLE_FONT_SIZE, color: '#ff8a00', fontWeight: 700, marginBottom: '0.7rem' }}>{t.title}</div>
+                  <div style={{ fontSize: DESC_FONT_SIZE, opacity: 0.92 }}>{t.desc}</div>
                 </div>
               ))}
             </div>
@@ -264,13 +276,13 @@ export default function TeamPage() {
             <h1 style={{ fontSize: '2.2rem', fontWeight: 800, marginBottom: '2.2rem', letterSpacing: '-0.01em', background: 'linear-gradient(90deg, #fff 60%, #ff8a00 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', textShadow: '0 2px 16px rgba(0,0,0,0.25)', textAlign: 'center' }}>
               Founders
             </h1>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '2.5rem', marginBottom: '3.5rem', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: GAP_DESKTOP, marginBottom: '4.5rem', flexWrap: 'wrap' }}>
               {founders.map((f, i) => (
-                <div key={i} style={{ background: 'rgba(30,30,40,0.7)', borderRadius: '1.2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.18)', padding: '1.5rem 1.2rem', width: 220, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <Image src={getImgSrc(f.img)} alt={f.name} width={90} height={90} style={{ borderRadius: '50%', objectFit: 'cover', marginBottom: '1.1rem', border: '3px solid #fff', boxShadow: '0 2px 12px rgba(0,0,0,0.12)' }} />
-                  <div style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.2rem' }}>{f.name}</div>
-                  <div style={{ fontSize: '0.98rem', color: '#ff8a00', fontWeight: 600, marginBottom: '0.5rem' }}>{f.title}</div>
-                  <div style={{ fontSize: '0.97rem', opacity: 0.88 }}>{f.desc}</div>
+                <div key={i} style={{ background: 'rgba(30,30,40,0.8)', borderRadius: '1.6rem', boxShadow: '0 8px 32px rgba(0,0,0,0.22)', padding: BOX_PADDING, width: BOX_WIDTH, minWidth: BOX_WIDTH, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <Image src={getImgSrc(f.img)} alt={f.name} width={IMG_SIZE} height={IMG_SIZE} style={{ borderRadius: '50%', objectFit: 'cover', marginBottom: '1.5rem', border: IMG_BORDER, boxShadow: IMG_BOX_SHADOW }} />
+                  <div style={{ fontWeight: 800, fontSize: NAME_FONT_SIZE, marginBottom: '0.35rem' }}>{f.name}</div>
+                  <div style={{ fontSize: TITLE_FONT_SIZE, color: '#ff8a00', fontWeight: 700, marginBottom: '0.7rem' }}>{f.title}</div>
+                  <div style={{ fontSize: DESC_FONT_SIZE, opacity: 0.92 }}>{f.desc}</div>
                 </div>
               ))}
             </div>
@@ -284,13 +296,13 @@ export default function TeamPage() {
             <h2 style={{ fontSize: '1.7rem', fontWeight: 800, marginBottom: '1.5rem', letterSpacing: '-0.01em', background: 'linear-gradient(90deg, #fff 60%, #ff8a00 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', textShadow: '0 2px 16px rgba(0,0,0,0.18)', textAlign: 'center' }}>
               Team
             </h2>
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2.2rem', maxWidth: 1200, margin: '0 auto' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: GAP_DESKTOP, maxWidth: 1400, margin: '0 auto' }}>
               {team.map((t, i) => (
-                <div key={i} style={{ background: 'rgba(30,30,40,0.7)', borderRadius: '1.2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.13)', padding: '1.2rem 1rem', width: 180, minWidth: 180, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <Image src={getImgSrc(t.img)} alt={t.name} width={70} height={70} style={{ borderRadius: '50%', objectFit: 'cover', marginBottom: '0.8rem', border: '2px solid #fff', boxShadow: '0 2px 8px rgba(0,0,0,0.10)' }} />
-                  <div style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '0.15rem' }}>{t.name}</div>
-                  <div style={{ fontSize: '0.93rem', color: '#ff8a00', fontWeight: 600, marginBottom: '0.4rem' }}>{t.title}</div>
-                  <div style={{ fontSize: '0.93rem', opacity: 0.85 }}>{t.desc}</div>
+                <div key={i} style={{ background: 'rgba(30,30,40,0.8)', borderRadius: '1.6rem', boxShadow: '0 8px 32px rgba(0,0,0,0.22)', padding: BOX_PADDING, width: BOX_WIDTH, minWidth: BOX_WIDTH, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <Image src={getImgSrc(t.img)} alt={t.name} width={IMG_SIZE} height={IMG_SIZE} style={{ borderRadius: '50%', objectFit: 'cover', marginBottom: '1.5rem', border: IMG_BORDER, boxShadow: IMG_BOX_SHADOW }} />
+                  <div style={{ fontWeight: 800, fontSize: NAME_FONT_SIZE, marginBottom: '0.35rem' }}>{t.name}</div>
+                  <div style={{ fontSize: TITLE_FONT_SIZE, color: '#ff8a00', fontWeight: 700, marginBottom: '0.7rem' }}>{t.title}</div>
+                  <div style={{ fontSize: DESC_FONT_SIZE, opacity: 0.92 }}>{t.desc}</div>
                 </div>
               ))}
             </div>
