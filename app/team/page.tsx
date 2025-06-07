@@ -31,6 +31,12 @@ const founders = [
 
 const team = [
   {
+    name: 'Eusebio Morales Quintanal',
+    title: 'CBO',
+    img: 'bebo.jpeg',
+    desc: 'Engineering student with experience in Direct lending, leverage finance, Distressed debt, High grade credit and special situations; passionate about finance, technology and innovation.'
+  },
+  {
     name: 'Mariia Ivanova',
     title: 'Marketing Lead',
     img: 'mariia.jpeg',
@@ -45,7 +51,7 @@ const team = [
   {
     name: 'Saud Shahini',
     title: 'Developer',
-    img: 'saud.JPG',
+    img: 'saud.jpeg',
     desc: 'Student at the University of Southampton with a passion for technology and finance.'
   },
 ]
