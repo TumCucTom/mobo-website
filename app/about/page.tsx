@@ -171,6 +171,7 @@ export default function AboutPage() {
           <Link href="/signup" style={{ color: 'white', textDecoration: 'none', fontSize: '1.1rem', fontWeight: 500, transition: 'opacity 0.2s', opacity: 0.92 }}>Sign Up</Link>
           <Link href="/about" style={{ color: 'white', textDecoration: 'none', fontSize: '1.1rem', fontWeight: 500, transition: 'opacity 0.2s', opacity: 0.92 }}>About</Link>
           <Link href="/team" style={{ color: 'white', textDecoration: 'none', fontSize: '1.1rem', fontWeight: 500, transition: 'opacity 0.2s', opacity: 0.92 }}>Team</Link>
+          <Link href="/business" style={{ color: 'white', textDecoration: 'none', fontSize: '1.1rem', fontWeight: 500, transition: 'opacity 0.2s', opacity: 0.92 }}>Business Enquiries</Link>
         </div>
       </div>
       <div style={{
@@ -240,7 +241,7 @@ export default function AboutPage() {
               For Investors & Businesses
             </div>
             Interested in B2B affiliate marketing or a white-label product license?<br />
-            Contact us at <a href="mailto:mobo-app@gmail.com" style={{ color: '#ffd180', textDecoration: 'underline', fontWeight: 600 }}>mobo-app@gmail.com</a>
+            <Link href="/business" style={{ color: '#ffd180', textDecoration: 'underline', fontWeight: 600 }}>Visit our Business Enquiries page</Link>
           </div>
         </div>
       </div>
