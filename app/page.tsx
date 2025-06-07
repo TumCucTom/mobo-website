@@ -84,7 +84,7 @@ export default function Home() {
           letterSpacing: '0.08em',
           textDecoration: 'none',
         }}>
-          MOBO
+          MONOMI
         </Link>
         <div style={{ display: 'flex', gap: '2.2rem', alignItems: 'center' }}>
           <Link href="/signup" style={{ color: 'white', textDecoration: 'none', fontSize: '1.1rem', fontWeight: 500, transition: 'opacity 0.2s', opacity: 0.92 }}>Sign Up</Link>
@@ -122,7 +122,7 @@ export default function Home() {
     userSelect: 'none',
   }}
 >
-  MOBO IS COMING
+  MONOMI IS COMING
 </h1>
 
 

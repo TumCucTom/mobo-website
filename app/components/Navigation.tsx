@@ -23,7 +23,7 @@ export default function Navigation() {
     }}>
       {/* Logo */}
       <Link href="/" style={{ textDecoration: 'none', color: 'white' }}>
-        <h1 style={{ margin: 0, fontSize: '2rem', fontWeight: 'bold' }}>MOBO</h1>
+        <h1 style={{ margin: 0, fontSize: '2rem', fontWeight: 'bold' }}>MONOMI</h1>
       </Link>
 
       {/* Desktop Navigation */}
