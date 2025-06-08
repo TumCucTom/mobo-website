@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MONOMI",
+  title: "HIKAYA",
   description: "Gamified Financial Education",
 };
 

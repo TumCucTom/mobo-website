@@ -122,7 +122,7 @@ export default function Home() {
     userSelect: 'none',
   }}
 >
-  MONOMI IS COMING
+  HIKAYA IS COMING
 </h1>
 
 

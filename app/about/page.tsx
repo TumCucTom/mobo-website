@@ -219,13 +219,13 @@ export default function AboutPage() {
           maxWidth: isMobile ? 600 : undefined,
         }}>
           <h1 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '1.5rem', letterSpacing: '-0.02em', background: 'linear-gradient(90deg, #fff 60%, #ff8a00 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', textShadow: '0 2px 16px rgba(0,0,0,0.25)' }}>
-            About MONOMI
+            About HIKAYA
           </h1>
           <p style={{ fontSize: '1.15rem', marginBottom: '1.2rem', lineHeight: 1.7 }}>
-            MONOMI is a gamified financial education app designed to make learning about money engaging, interactive, and fun. In MONOMI, you&apos;ll explore a universe of themed worlds, each focused on a different aspect of personal finance—from budgeting basics to investing, credit, and beyond. As you journey through these worlds, you&apos;ll unlock bite-sized video lessons, interactive challenges, and seamless story-driven modules that make complex financial concepts easy to understand and apply.
+            HIKAYA is a gamified financial education app designed to make learning about money engaging, interactive, and fun. In HIKAYA, you&apos;ll explore a universe of themed worlds, each focused on a different aspect of personal finance—from budgeting basics to investing, credit, and beyond. As you journey through these worlds, you&apos;ll unlock bite-sized video lessons, interactive challenges, and seamless story-driven modules that make complex financial concepts easy to understand and apply.
           </p>
           <p style={{ fontSize: '1.15rem', lineHeight: 1.7, marginBottom: '2.2rem' }}>
-            Whether you&apos;re a beginner or looking to level up your financial skills, MONOMI adapts to your pace and rewards your progress with achievements, collectibles, and real-world insights. Our mission is to empower you to build confidence and mastery over your finances, all while having fun. Join a community of learners, track your growth, and discover how financial education can be an adventure—one world at a time.
+            Whether you&apos;re a beginner or looking to level up your financial skills, HIKAYA adapts to your pace and rewards your progress with achievements, collectibles, and real-world insights. Our mission is to empower you to build confidence and mastery over your finances, all while having fun. Join a community of learners, track your growth, and discover how financial education can be an adventure—one world at a time.
           </p>
           <div style={{
             marginTop: '2.5rem',

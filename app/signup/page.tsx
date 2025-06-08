@@ -206,7 +206,7 @@ export default function SignupPage() {
           letterSpacing: '0.08em',
           textDecoration: 'none',
         }}>
-          MONOMI
+          HIKAYA
         </Link>
         <div style={{ display: 'flex', gap: '2.2rem', alignItems: 'center' }}>
           <Link href="/signup" style={{ color: 'white', textDecoration: 'none', fontSize: '1.1rem', fontWeight: 500, transition: 'opacity 0.2s', opacity: 0.92 }}>Sign Up</Link>
@@ -235,7 +235,7 @@ export default function SignupPage() {
         {submitted ? (
           <>
             <h2 style={{ marginBottom: '1.5rem' }}>Thank you for registering!</h2>
-            <p>We&apos;ll let you know when MONOMI launches 🚀</p>
+            <p>We&apos;ll let you know when HIKAYA launches 🚀</p>
           </>
         ) : (
           <>
